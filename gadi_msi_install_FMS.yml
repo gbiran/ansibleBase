@@ -1,0 +1,28 @@
+---
+ - hosts: localhost
+   tasks:
+   - name: find latest msi path
+     shell: find {{nightlyRepo}} -type f -name {{grep_name}}*|tail -n1
+     register: msi_name
+     ignore_errors: True
+
+   - name: copy msi to target host
+     shell: cp {{hostvars.localhost.msi_name.stdout}} {{winIP}}
+     ignore_errors: True
+
+ - hosts: '{{ target }}'
+   vars:
+## Gadi remark - the split should be fixed, the number 6 may be different each time - it should be the file name?
+       mymsi: "{{ hostvars.localhost.msi_name.stdout.split('/')[6] }}"
+##       shell: echo {{hostvars.localhost.msi_name.stdout}}|rev|cut -d "/" -f1|rev
+##       register: mymsi
+   tasks:
+   - name: uninstall msi
+## Gadi remark - the uninstall may have a failure if there are different in major.minor versions: old ver is 8.7.x.y new ver is 8.8.x.y
+     ###raw: "MsiExec.exe /uninstall {{msi_guid}} /qb"
+     win_msi: path={{msiPath}}\\{{mymsi}} state=absent
+     register: result
+     ignore_errors: True
+
+   - name: "Install"
+     raw: "MsiExec.exe /{{msiInstallOption}} {{msiPath}}\\{{mymsi}} /{{msiLogOption}} {{logFilePath}}\\{{logFileName}} ORACIP={{dbHost}} ORASRVNAME=\"{{dbSID}}\" DBUSER1=\"{{dbUser}}\" DBPASS1=\"{{dbPass}}\" PORT=\"{{dbPort}}\"  SRVACC=\"{{serviceUsername}}\" SRVACCPWD={{servicePassword}}  /{{msiDisplayOption}}"

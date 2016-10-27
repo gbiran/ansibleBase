@@ -1,0 +1,6 @@
+---
+#FMS
+ - include: "gadi_msi_install_FMS.yml  grep_name=FMS target=win_222_113 msi_guid={69AAAC97-D43-445A-B399-B3E714E6065}"
+#WSC
+ - include: "gadi_msi_install_FMS.yml grep_name=WSC  target=win_222_13  msi_guid={4EBBBBB8-67BA-4BD6-814A-01654AE63A74}"
+
