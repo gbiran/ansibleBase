@@ -1,0 +1,22 @@
+ansible_ssh_user: uSer
+ansible_ssh_pass: passWord
+ansible_ssh_port: 1234
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
+
+serviceUsername: .\uSer
+servicePassword: passWord
+
+msiPath: c:\some_shred_folder 
+msiInstallOption: i
+msiLogOption: L*V
+msiDisplayOption: qn
+
+dbHost: 193.18.222.103
+dbSID: sidName
+dbUser: dbUserName
+dbPass: dbPassWord
+dbPort: 1521
+
+logFilePath: c:\
+logFileName: deployBlaBla.log
