@@ -4,3 +4,8 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
+
+    - name: Print Env Var
+      debug:
+        msg: "{{ lookup('env','USER','HOME','SHELL') }}"
+        
