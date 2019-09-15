@@ -3,7 +3,4 @@
   tasks:
     - name: Hello Message
       debug:
-        msg: "Hello World!"tasks:
-    - name: Show ENV Vars 
-      debug:
-        msg: "{{ lookup('env', 'HOME')}}"
+        msg: "Hello World!"
