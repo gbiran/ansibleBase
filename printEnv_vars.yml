@@ -3,4 +3,4 @@
   tasks:
     - name: Print Env Var
       debug:
-        msg: "{{ lookup('env','USER','HOME','SHELL') }}
+        msg: "{{ lookup('env','USER','HOME','SHELL') }}"
