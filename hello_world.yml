@@ -1,7 +1,10 @@
 - name: Hello World Sample
   hosts: all
   tasks:
-    - name: Print Env Var
+    - name: Hello Message
       debug:
-        msg: "{{ lookup('env','USER','HOME','SHELL') }}"
-        
+        msg: "Hello World!"tasks:
+    - name: Show ENV Vars 
+      debug:
+        msg: "{{ lookup('env', 'HOME')}}"
+
