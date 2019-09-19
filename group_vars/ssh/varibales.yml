@@ -1,0 +1,2 @@
+user: ansiUser
+mypassword: "{{ vault_sshpassword }}"
