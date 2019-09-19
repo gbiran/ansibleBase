@@ -9,11 +9,7 @@
         msg: "{{ lookup('env', 'HOME')}}"
     - name: Create Directories
       file:
-        path: "{{ item }}"
+        path: '/home/sandboxadmin/ansiblePOC/folder1'
         state: directory
         recurse: yes
-        mode: 0755        
-        with_items:
-        - '/home/sandboxadmin/ansiblePOC/folder1'
-        - '/home/sandboxadmin/ansiblePOC/folder2'
-        - '/home/sandboxadmin/ansiblePOC/folder3'
+        mode: 0755
