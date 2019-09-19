@@ -15,7 +15,7 @@
         mode: 0755
 
     - name: Get variables
-      include_vars: ./group_vars/ssh/varibales.yml
+      include_vars: ./group_vars/ssh/*.*
       
     - name: Create new user using passworrd from vault variable
       shell: useradd ansiuser4 &&  echo {{ vault_sshpassword }} | passwd ansiuser4 --stdin
