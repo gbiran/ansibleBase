@@ -18,4 +18,4 @@
       include_vars: /group_vars/ssh/varibales.yml
       
     - name: Create new user using passworrd from vault variable
-      shell: useradd ansiuser4 &&  echo UserAnsi@123 | passwd ansiuser4 --stdin
+      shell: useradd ansiuser4 &&  echo {{ vault_sshpassword }} | passwd ansiuser4 --stdin
