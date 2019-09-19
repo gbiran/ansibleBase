@@ -7,3 +7,13 @@
     - name: Show ENV Vars 
       debug:
         msg: "{{ lookup('env', 'HOME')}}"
+    - name: Create Directories
+      file:
+        path: " {{ item }} "
+        state: directory
+        recurse: yes
+        mode: 0755        
+        with_items:
+        - /home/sandboxadmin/ansiblePOC/folder1
+        - /home/sandboxadmin/ansiblePOC/folder2
+        - /home/sandboxadmin/ansiblePOC/folder3
