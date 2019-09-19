@@ -1,0 +1,18 @@
+- hosts: localhost
+  tasks:
+        - name: include_vars vars_secret.yml
+          include_vars: vars_secret.yml
+
+        - name: Simple select query to acme db
+          postgresql_query:
+            db: "{{pg_db}}"
+            login_user: "{{pg_user}}"
+            login_password: "{{pg_password}}"
+            login_host: localhost
+            query: SELECT * FROM pg_catalog.pg_tables
+          register: pg_result
+
+
+        - debug:
+            msg: "Simple select query to acme db is {{pg_result.query_result}}"
+
