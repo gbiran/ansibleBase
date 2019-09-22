@@ -1,8 +1,7 @@
 - hosts: localhost
+  vars_files:
+    - ./vars_secret.yml
   tasks:
-        - name: include_vars vars_secret.yml
-          include_vars: vars_secret.yml
-
         - name: Simple select query to acme db
           postgresql_query:
             db: "{{pg_db}}"
